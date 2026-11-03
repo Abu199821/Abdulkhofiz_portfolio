@@ -24,7 +24,6 @@ function renderSite(){
  const portrait=document.getElementById('heroPortrait'),portraitSrc=safeImage(data.photo);portrait.src=portraitSrc;portrait.alt=portraitSrc?`Portrait of ${data.name}`:'';portrait.hidden=!portraitSrc;document.getElementById('portraitFallback').hidden=!!portraitSrc;
  document.getElementById('heroSkills').innerHTML=data.skills.slice(0,5).map(s=>`<b>${esc(s)}</b>`).join('');
   const linkedinUrl=externalUrl(data.linkedin,'linkedin.com'),githubUrl=externalUrl(data.github,'github.com');
-  const linkedinUrl=externalUrl(data.linkedin,'linkedin.com'),githubUrl=externalUrl(data.github,'github.com');
   document.getElementById('socialLinks').innerHTML=[['LinkedIn',linkedinUrl,'in'],['GitHub',githubUrl,'GH'],['Email',data.email,'✉']]
     .filter(([,url])=>url)
     .map(([label,url,icon])=>{
@@ -102,6 +101,7 @@ document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDe
 ['headerCV','heroCV'].forEach(id=>document.getElementById(id).addEventListener('click',e=>{e.preventDefault();downloadCV()}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEditor()});
 renderSite();
+
 
 
 
